@@ -33,6 +33,12 @@ def check_url(url):
 
         return "NO KNOWN THREATS FOUND"
 
-    except requests.RequestException:
-        return "SCAN ERROR"
+    except requests.HTTPError as error:
+    print("Google API HTTP error:", response.status_code)
+    print("Google API response:", response.text)
+    return "SCAN ERROR"
+
+except requests.RequestException as error:
+    print("Request error:", error)
+    return "SCAN ERROR"
         
