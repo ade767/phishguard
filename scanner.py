@@ -1,5 +1,4 @@
 
-
 import os
 import requests
 
@@ -38,7 +37,8 @@ def check_url(url):
         print("Google API response:", response.text)
         return "SCAN ERROR"
 
-except requests.RequestException as error:
-    print("Request error:", error)
-    return "SCAN ERROR"
+    except requests.RequestException as error:
+        print("Request error:", error)
+        return "SCAN ERROR"
         
+
