@@ -25,7 +25,14 @@ def check_url(url):
         )
 
         response.raise_for_status()
+
+        print("STATUS:", response.status_code)
+        print("CONTENT TYPE:", response.headers.get("Content-Type"))
+        print("RESPONSE:", 
+         repr(response.text[:500]))
+
         data = response.json()
+        
 
         if data.get("threats"):
             return "DANGEROUS"
