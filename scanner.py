@@ -15,6 +15,7 @@ def check_url(url):
     params = {
         "key": API_KEY,
         "urls": url
+        "alt":"json"
     }
 
     try:
