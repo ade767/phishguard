@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PhishGuard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>🛡️ PHISHGUARD</h1>
+    <p>Your personal phishing link checker.</p>
+
+    <form action="/scan" method="POST">
+    <input
+        type="text"
+        name="url"
+        placeholder="Paste a URL here..."
+        required
+    >
+
+    <button type="submit">SCAN LINK</button>
+</form>
+
+    <p>Stay safe. Think before you click.</p>
+
+</body>
+</html>
