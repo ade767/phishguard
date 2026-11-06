@@ -122,5 +122,40 @@
 
     </div>
 
+
+    
+<!-- SCANNING OVERLAY -->
+<div id="scanOverlay" class="scan-overlay">
+    <div class="scan-animation">
+        <div class="scan-ring">🛡️</div>
+    </div>
+
+    <h2>Analyzing URL Security</h2>
+    <p>Checking for potential threats...</p>
+
+    <div class="loading-bar">
+        <div class="loading-progress"></div>
+    </div>
+
+    <span class="scan-status">INITIALIZING SCAN</span>
+</div>
+
+<script>
+const scanForm = document.querySelector("form");
+const scanOverlay = document.getElementById("scanOverlay");
+
+scanForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    scanOverlay.classList.add("active");
+
+    setTimeout(function() {
+        scanForm.submit();
+    }, 900);
+});
+</script>
 </body>
 </html>
+
+
+
