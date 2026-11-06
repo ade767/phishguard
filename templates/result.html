@@ -1,4 +1,3 @@
-
 <html>
 <head>
     <title>PhishGuard Results</title>
@@ -12,7 +11,27 @@
 
     <h3>{{ url }}</h3>
 
-    <h2>Scan Status: {{ result }}</h2>
+    <h2>Google Safe Browsing Status: {{ result }}</h2>
+
+    <hr>
+
+    <h2>URL Security Analysis</h2>
+
+    {% if warnings %}
+
+        <h3>Potential Warning Signs:</h3>
+
+        <ul>
+            {% for warning in warnings %}
+                <li>{{ warning }}</li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+
+        <p>No suspicious URL characteristics detected.</p>
+
+    {% endif %}
 
     <a href="/">Back to Home</a>
 
