@@ -1,10 +1,40 @@
 
 import os
 import requests
+import ipaddress
+from urllib.parse import urlparse
 
 API_KEY = os.environ.get("SAFE_BROWSING_API_KEY")
 
 API_URL = "https://safebrowsing.googleapis.com/v4/threatMatches:find"
+
+
+def analyze_url(url):
+    warnings = []
+
+    parsed = urlparse(url)
+    domain = parsed.hostname
+
+    if not domain:
+        warnings.append("Invalid URL")
+        return warnings
+
+    try:
+        ipaddress.ip_address(domain)
+        warnings.append("URL uses an IP address")
+    except ValueError:
+        pass
+
+    if "@" in url:
+        warnings.append("URL contains an @ symbol")
+
+    if len(url) > 100:
+        warnings.append("Unusually long URL")
+
+    if len(domain.split(".")) > 4:
+        warnings.append("Excessive subdomains")
+
+    return warnings
 
 
 def check_url(url):
@@ -42,42 +72,6 @@ def check_url(url):
 
         response.raise_for_status()
         data = response.json()
-
-from urllib.parse import urlparse
-import ipaddress
-
-
-def analyze_url(url):
-    warnings = []
-
-    parsed = urlparse(url)
-
-    domain = parsed.hostname
-
-    if not domain:
-        warnings.append("Invalid URL")
-        return warnings
-
-    # Check for IP address instead of domain name
-    try:
-        ipaddress.ip_address(domain)
-        warnings.append("URL uses an IP address")
-    except ValueError:
-        pass
-
-    # Check for @ symbol
-    if "@" in url:
-        warnings.append("URL contains an @ symbol")
-
-    # Check URL length
-    if len(url) > 100:
-        warnings.append("Unusually long URL")
-
-    # Check number of subdomains
-    if len(domain.split(".")) > 4:
-        warnings.append("Excessive subdomains")
-
-    return warnings
 
         if data.get("matches"):
             return "DANGEROUS"
