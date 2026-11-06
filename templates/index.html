@@ -1,26 +1,126 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>PhishGuard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhishGuard | Link Security</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-    <h1>🛡️ PHISHGUARD</h1>
-    <p>Your personal phishing link checker.</p>
+    <div class="app-container">
 
-    <form action="/scan" method="POST">
-    <input
-        type="text"
-        name="url"
-        placeholder="Paste a URL here..."
-        required
-    >
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo">
+                <span class="shield">🛡️</span>
+                <span>PHISHGUARD</span>
+            </div>
 
-    <button type="submit">SCAN LINK</button>
-</form>
+            <div class="status">
+                <span class="status-dot"></span>
+                SECURITY ACTIVE
+            </div>
+        </header>
 
-    <p>Stay safe. Think before you click.</p>
+        <!-- HERO SECTION -->
+        <main class="main-content">
+
+            <div class="hero">
+
+                <div class="shield-animation">
+                    <div class="shield-ring">
+                        🛡️
+                    </div>
+                </div>
+
+                <p class="eyebrow">YOUR DIGITAL SAFETY STARTS HERE</p>
+
+                <h1>
+                    Don't Trust Every Link.
+                    <span>Verify First.</span>
+                </h1>
+
+                <p class="description">
+                    Protect yourself from phishing attacks and malicious websites.
+                    Scan suspicious links before you click.
+                </p>
+
+            </div>
+
+            <!-- SCANNER -->
+            <section class="scanner-card">
+
+                <div class="scanner-heading">
+                    <h2>URL Security Scanner</h2>
+                    <p>Check a link for known security threats.</p>
+                </div>
+
+                <form action="/scan" method="POST">
+
+                    <label for="url">Website URL</label>
+
+                    <div class="input-wrapper">
+                        <span>🔗</span>
+
+                        <input
+                            type="url"
+                            id="url"
+                            name="url"
+                            placeholder="https://example.com"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="scan-button">
+                        <span>SCAN LINK</span>
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+                <div class="privacy-note">
+                    🔒 Your security matters. Scan before you click.
+                </div>
+
+            </section>
+
+            <!-- SECURITY FEATURES -->
+            <section class="features">
+
+                <div class="feature">
+                    <span>⚡</span>
+                    <h3>Fast Scanning</h3>
+                    <p>Quick URL security checks.</p>
+                </div>
+
+                <div class="feature">
+                    <span>🛡️</span>
+                    <h3>Threat Detection</h3>
+                    <p>Identify known malicious links.</p>
+                </div>
+
+                <div class="feature">
+                    <span>🔍</span>
+                    <h3>Smart Analysis</h3>
+                    <p>Security checks powered by Google Safe Browsing.</p>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>PHISHGUARD © 2026</p>
+            <p>Stay safe. Think before you click.</p>
+        </footer>
+
+    </div>
 
 </body>
 </html>
