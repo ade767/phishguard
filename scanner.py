@@ -37,6 +37,7 @@ def analyze_url(url):
     return warnings
 
 
+
 def check_url(url):
     if not API_KEY:
         return "SCAN ERROR: API key missing"
@@ -73,11 +74,19 @@ def check_url(url):
         response.raise_for_status()
         data = response.json()
 
-        if data.get("matches"):
-            return "DANGEROUS"
+        matches = data.get("matches", [])
+
+        if matches:
+            threat_types = list(set(
+                match.get("threatType", "UNKNOWN")
+                for match in matches
+            ))
+
+            return ", ".join(threat_types)
 
         return "NO KNOWN THREATS FOUND"
 
     except requests.RequestException as error:
         print("Google API error:", error)
         return "SCAN ERROR"
+        
