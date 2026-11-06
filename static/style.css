@@ -396,6 +396,187 @@ footer {
 }
 
 
+/* RESULTS PAGE */
+
+.results-container {
+    max-width: 700px;
+    margin: 55px auto;
+}
+
+.results-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.report-icon {
+    font-size: 45px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.results-heading h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.result-card {
+    background: #101e30;
+    border: 1px solid #263b50;
+    border-radius: 15px;
+    padding: 23px;
+    margin-bottom: 18px;
+}
+
+.result-label {
+    color: #00ffa6;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+.scanned-url {
+    background: #07111f;
+    padding: 16px;
+    border-radius: 9px;
+    color: #b9cbdc;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+    line-height: 1.6;
+}
+
+.threat-indicator {
+    padding: 22px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.threat-indicator.danger {
+    background: #ff333318;
+    border: 1px solid #ff4545;
+}
+
+.threat-indicator.neutral {
+    background: #00ffa610;
+    border: 1px solid #00ffa655;
+}
+
+.result-icon {
+    font-size: 40px;
+}
+
+.threat-indicator h2 {
+    font-size: 19px;
+    margin: 12px 0;
+    overflow-wrap: anywhere;
+}
+
+.threat-indicator.danger h2 {
+    color: #ff5555;
+}
+
+.threat-indicator.neutral h2 {
+    color: #00ffa6;
+}
+
+.threat-indicator p {
+    color: #a4b5c8;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.warning-heading {
+    color: #ffbd59;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.warning-list {
+    padding-left: 20px;
+    color: #d0dce8;
+}
+
+.warning-list li {
+    margin-bottom: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.no-warnings {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.no-warnings > span {
+    color: #00ffa6;
+    font-size: 28px;
+}
+
+.no-warnings h3 {
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.no-warnings p {
+    color: #91a4ba;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.security-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 17px;
+    background: #17283b;
+    border-left: 3px solid #00cfff;
+    border-radius: 8px;
+    margin: 25px 0;
+}
+
+.security-notice p {
+    color: #a9bacd;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.result-back-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: linear-gradient(90deg, #00c987, #00ffa6);
+    color: #061a17;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.result-back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px #00ffa644;
+}
+
+@media (max-width: 600px) {
+    .results-container {
+        margin: 40px auto;
+    }
+
+    .result-card {
+        padding: 19px;
+    }
+
+    .results-heading h1 {
+        font-size: 27px;
+    }
+        }
+
+
 
     
 
