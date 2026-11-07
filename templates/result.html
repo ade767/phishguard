@@ -164,8 +164,13 @@
     </div>
 
     <div class="scan-detail">
-        <span>Scan Status</span>
+    <span>Scan Status</span>
+
+    {% if 'SCAN ERROR' in result %}
+        <strong style="color: #ff5555;">Failed</strong>
+    {% else %}
         <strong>Completed</strong>
+    {% endif %}
     </div>
 
 </section>
