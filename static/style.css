@@ -576,6 +576,39 @@ footer {
     }
         }
 
+/* SCAN DETAILS */
+
+.scan-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 13px 0;
+    border-bottom: 1px solid #263b50;
+}
+
+.scan-detail:last-child {
+    border-bottom: none;
+}
+
+.scan-detail span {
+    color: #91a4ba;
+    font-size: 12px;
+}
+
+.scan-detail strong {
+    color: #00ffa6;
+    font-size: 12px;
+    text-align: right;
+}
+
+@media (max-width: 400px) {
+    .scan-detail {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+    }
+}
 
 
     
