@@ -1,7 +1,15 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from scanner import check_url, analyze_url
 
 app = Flask(__name__)
+
+@app.route("/service-worker.js")
+def service_worker():
+    return send_from_directory(
+        "static",
+        "service-worker.js",
+        mimetype="application/javascript"
+    )
 
 @app.route("/")
 def home():
