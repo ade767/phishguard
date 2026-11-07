@@ -1,0 +1,12 @@
+{
+  "name": "PhishGuard - Link Security",
+  "short_name": "PhishGuard",
+  "description": "Protect yourself from phishing and malicious websites.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#101827",
+  "theme_color": "#101827",
+  "icons": []
+}
