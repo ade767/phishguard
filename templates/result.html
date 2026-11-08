@@ -61,12 +61,8 @@
 
                 <div class="threat-indicator danger">
                     <span class="result-icon">⚠️</span>
-
                     <h2>PHISHING DETECTED</h2>
-
-                    <p>
-                        Google identified this URL as a potential phishing threat.
-                    </p>
+                    <p>Google identified this URL as a potential phishing threat.</p>
                 </div>
 
             {% endif %}
@@ -75,12 +71,8 @@
 
                 <div class="threat-indicator danger">
                     <span class="result-icon">🦠</span>
-
                     <h2>MALWARE DETECTED</h2>
-
-                    <p>
-                        This URL is associated with malicious software.
-                    </p>
+                    <p>This URL is associated with malicious software.</p>
                 </div>
 
             {% endif %}
@@ -89,12 +81,8 @@
 
                 <div class="threat-indicator danger">
                     <span class="result-icon">⚠️</span>
-
                     <h2>UNWANTED SOFTWARE</h2>
-
-                    <p>
-                        This URL is associated with unwanted software.
-                    </p>
+                    <p>This URL is associated with unwanted software.</p>
                 </div>
 
             {% endif %}
@@ -103,12 +91,8 @@
 
                 <div class="threat-indicator neutral">
                     <span class="result-icon">🛡️</span>
-
                     <h2>NO KNOWN THREATS FOUND</h2>
-
-                    <p>
-                        Google Safe Browsing did not identify a known threat.
-                    </p>
+                    <p>Google Safe Browsing did not identify a known threat.</p>
                 </div>
 
             {% endif %}
@@ -117,9 +101,7 @@
 
                 <div class="threat-indicator danger">
                     <span class="result-icon">❌</span>
-
                     <h2>SCAN ERROR</h2>
-
                     <p>{{ result }}</p>
                 </div>
 
@@ -133,9 +115,7 @@
 
                 <div class="threat-indicator neutral">
                     <span class="result-icon">ℹ️</span>
-
                     <h2>UNKNOWN SCAN RESULT</h2>
-
                     <p>{{ result }}</p>
                 </div>
 
@@ -143,37 +123,79 @@
 
         </section>
 
+        <!-- DOMAIN INTELLIGENCE -->
+        <section class="result-card">
+
+            <p class="result-label">🌐 DOMAIN INTELLIGENCE</p>
+
+            <div class="scan-detail">
+                <span>Domain</span>
+                <strong>{{ domain_intelligence.domain }}</strong>
+            </div>
+
+            <div class="scan-detail">
+                <span>Registration Date</span>
+                <strong>{{ domain_intelligence.registration_date }}</strong>
+            </div>
+
+            <div class="scan-detail">
+                <span>Domain Age</span>
+                <strong>{{ domain_intelligence.domain_age }}</strong>
+            </div>
+
+            <div class="scan-detail">
+                <span>Registrar</span>
+                <strong>{{ domain_intelligence.registrar }}</strong>
+            </div>
+
+            <div class="scan-detail">
+                <span>Expiry Date</span>
+                <strong>{{ domain_intelligence.expiry_date }}</strong>
+            </div>
+
+            <div class="scan-detail">
+                <span>Domain Status</span>
+                <strong>{{ domain_intelligence.status }}</strong>
+            </div>
+
+            <p class="description">
+                Domain registration information retrieved through RDAP.
+                Unavailable fields may not be published by the registry.
+            </p>
+
+        </section>
+
         <!-- SCAN DETAILS -->
-<section class="result-card">
+        <section class="result-card">
 
-    <p class="result-label">SCAN DETAILS</p>
+            <p class="result-label">SCAN DETAILS</p>
 
-    <div class="scan-detail">
-        <span>Detection Engine</span>
-        <strong>Google Safe Browsing</strong>
-    </div>
+            <div class="scan-detail">
+                <span>Detection Engine</span>
+                <strong>Google Safe Browsing</strong>
+            </div>
 
-    <div class="scan-detail">
-        <span>API Version</span>
-        <strong>Version 4</strong>
-    </div>
+            <div class="scan-detail">
+                <span>API Version</span>
+                <strong>Version 4</strong>
+            </div>
 
-    <div class="scan-detail">
-        <span>Scan Type</span>
-        <strong>Real-time URL Lookup</strong>
-    </div>
+            <div class="scan-detail">
+                <span>Scan Type</span>
+                <strong>Real-time URL Lookup</strong>
+            </div>
 
-    <div class="scan-detail">
-    <span>Scan Status</span>
+            <div class="scan-detail">
+                <span>Scan Status</span>
 
-    {% if 'SCAN ERROR' in result %}
-        <strong style="color: #ff5555;">Failed</strong>
-    {% else %}
-        <strong>Completed</strong>
-    {% endif %}
-    </div>
+                {% if 'SCAN ERROR' in result %}
+                    <strong style="color: #ff5555;">Failed</strong>
+                {% else %}
+                    <strong>Completed</strong>
+                {% endif %}
+            </div>
 
-</section>
+        </section>
 
         <!-- LOCAL URL ANALYSIS -->
         <section class="result-card">
@@ -187,19 +209,14 @@
                 </div>
 
                 <ul class="warning-list">
-
                     {% for warning in warnings %}
-
                         <li>{{ warning }}</li>
-
                     {% endfor %}
-
                 </ul>
 
             {% else %}
 
                 <div class="no-warnings">
-
                     <span>✓</span>
 
                     <div>
@@ -209,7 +226,6 @@
                             No URL warnings were generated by the local analysis.
                         </p>
                     </div>
-
                 </div>
 
             {% endif %}
@@ -223,6 +239,7 @@
 
             <p>
                 No known threat does not guarantee that a website is safe.
+                Domain age alone also cannot determine whether a website is malicious.
                 Always verify links before clicking.
             </p>
 
@@ -230,26 +247,19 @@
 
         <!-- BACK BUTTON -->
         <a href="/" class="result-back-button">
-
             <span>←</span>
-
             BACK TO SCANNER
-
         </a>
 
     </main>
 
     <!-- FOOTER -->
     <footer>
-
         <p>PHISHGUARD © 2026</p>
-
         <p>Stay safe. Think before you click.</p>
-
     </footer>
 
 </div>
 
 </body>
 </html>
-
