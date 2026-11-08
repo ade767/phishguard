@@ -1,8 +1,8 @@
 
-
 import os
 import requests
 import ipaddress
+import tldextract
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 
