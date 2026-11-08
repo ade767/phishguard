@@ -41,9 +41,19 @@ def analyze_url(url):
     return warnings
 
 
+ 
 def get_domain_intelligence(domain):
+
+    # Extract the actual registered domain
+    extracted = tldextract.extract(domain)
+
+    registered_domain = extracted.top_domain_under_public_suffix
+
+    if not registered_domain:
+        registered_domain = domain.lower()
+
     result = {
-        "domain": domain,
+        "domain": registered_domain,
         "registration_date": "Unavailable",
         "domain_age": "Unavailable",
         "registrar": "Unavailable",
@@ -62,13 +72,12 @@ def get_domain_intelligence(domain):
         rdap_data = bootstrap.json()
 
         rdap_server = None
-        domain_lower = domain.lower()
 
         for service in rdap_data.get("services", []):
             tlds, urls = service
 
             for tld in tlds:
-                if domain_lower.endswith("." + tld.lower()) or domain_lower == tld.lower():
+                if registered_domain.endswith("." + tld.lower()) or registered_domain == tld.lower():
                     rdap_server = urls[0]
                     break
 
@@ -78,9 +87,9 @@ def get_domain_intelligence(domain):
         if not rdap_server:
             return result
 
-        # Query domain registration information
+        # Query registered domain
         response = requests.get(
-            f"{rdap_server.rstrip('/')}/domain/{domain}",
+            f"{rdap_server.rstrip('/')}/domain/{registered_domain}",
             headers={"Accept": "application/rdap+json"},
             timeout=15
         )
@@ -90,10 +99,15 @@ def get_domain_intelligence(domain):
 
         # Registration and expiry dates
         for event in data.get("events", []):
+
             action = event.get("eventAction")
             date = event.get("eventDate")
 
+            if not date:
+                continue
+
             if action == "registration":
+
                 registered = datetime.fromisoformat(
                     date.replace("Z", "+00:00")
                 )
@@ -112,6 +126,7 @@ def get_domain_intelligence(domain):
                 else:
                     years = days // 365
                     months = (days % 365) // 30
+
                     result["domain_age"] = (
                         f"{years} years, {months} months"
                         if years else f"{months} months"
@@ -122,11 +137,15 @@ def get_domain_intelligence(domain):
 
         # Registrar
         for entity in data.get("entities", []):
+
             if "registrar" in entity.get("roles", []):
+
                 vcard = entity.get("vcardArray", [])
 
                 if len(vcard) > 1:
+
                     for item in vcard[1]:
+
                         if item[0] == "fn":
                             result["registrar"] = item[3]
                             break
@@ -146,7 +165,8 @@ def get_domain_intelligence(domain):
         print("RDAP data error:", error)
 
     return result
-
+                    
+            
 
 def check_url(url):
     if not API_KEY:
